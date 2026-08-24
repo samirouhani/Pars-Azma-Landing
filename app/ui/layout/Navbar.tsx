@@ -25,7 +25,7 @@ export default function Navbar() {
     }, []);
 
     return (
-        <header className={`flex sticky top-0 z-50 w-full h-20 md:h-22 border-b border-border-gray bg-white/60 backdrop-blur-md ${
+        <header className={`flex sticky top-0 z-50 w-full h-20 md:h-22 border-b border-border-gray bg-white/70 backdrop-blur-md ${
         scrolled ? "shadow-lg" : "shadow-none"} transition-shadow duration-300 ease-in-out`}>
         <nav
             className="mx-auto flex w-full items-center justify-between px-6 md:p-4 xl:px-20"

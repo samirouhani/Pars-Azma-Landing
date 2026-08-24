@@ -17,7 +17,7 @@ export default function Hero() {
       <div className="h-full sm:max-w-[75%] px-5.5 md:px-14 xl:px-22">
         <div className="flex flex-col">
           <RevealOnScroll
-            className="flex h-5.25 items-center gap-3.5 text-xs font-semibold tracking-wider text-[#64748B]"
+            className="flex h-5.25 items-center gap-3.5 text-xs font-semibold tracking-wider text-secondary-text"
             delay={0}
           >
             <span className="text-[14px] font-normal">ISO9001</span>
@@ -33,7 +33,7 @@ export default function Hero() {
           </RevealOnScroll>
 
           <RevealOnScroll
-            className="mt-6 text-[1rem] leading-relaxed text-[#64748B]"
+            className="mt-6 text-[1rem] leading-relaxed text-secondary-text"
             delay={300}
           >
             <p>
@@ -88,7 +88,7 @@ export default function Hero() {
             href="https://t.me/yourhandle"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 border border-border-gray bg-white/30 backdrop-blur-md pl-2 pr-2 py-1 transition-colors hover:border-slate-400 xs:pr-4"
+            className="inline-flex items-center justify-center gap-2 border border-border-gray bg-white/30 backdrop-blur-md pl-2 pr-2 py-1 transition-colors hover:border-slate-400 hover:bg-white xs:pr-4"
           >
             <Image
               className="size-6.5 font-semibold"
@@ -104,7 +104,7 @@ export default function Hero() {
             href="https://wa.me/yournumber"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 border border-border-gray bg-white/30 backdrop-blur-md pl-2 pr-2 py-1 transition-colors hover:border-slate-400 xs:pr-4"
+            className="inline-flex items-center justify-center gap-2 border border-border-gray bg-white/30 backdrop-blur-md pl-2 pr-2 py-1 transition-colors hover:border-slate-400 hover:bg-white xs:pr-4"
           >
             <Image
               className="size-6.5 font-semibold"
@@ -120,7 +120,7 @@ export default function Hero() {
             href="https://instagram.com/yourhandle"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 border border-border-gray bg-white/30 backdrop-blur-md pl-2 pr-2 py-1 transition-colors hover:border-slate-400 xs:pr-4"
+            className="inline-flex items-center justify-center gap-2 border border-border-gray bg-white/30 backdrop-blur-md pl-2 pr-2 py-1 transition-colors hover:border-slate-400 hover:bg-white xs:pr-4"
           >
             <Image
               className="size-6.5 font-semibold"
