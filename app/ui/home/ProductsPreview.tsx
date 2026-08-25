@@ -9,14 +9,14 @@ const wittgenstein = Wittgenstein({
 
 // A standard data array that you can customize per product
 const productsData = [
-  { id: 1, title: "Laboratory plant germinator", category: "germinators", href: "/products/1", imageSrc: "/images/products/product1.webp" },
-  { id: 2, title: "Industrial Drying Ovenldfjalskdfjlaksjdf lkajsldfsadfljaslkf ajksdfkaldf", category: "ovens", href: "/products/2", imageSrc: "/images/products/product2.webp" },
-  { id: 3, title: "Laminar Flow Cabinet", category: "clean benches", href: "/products/3", imageSrc: "/images/products/product3.webp" },
-  { id: 4, title: "Chemical Fume Hood", category: "hoods", href: "/products/4", imageSrc: "/images/products/product4.webp" },
-  { id: 5, title: "BOD Incubator", category: "incubators", href: "/products/5", imageSrc: "/images/products/product5.webp" },
-  { id: 6, title: "Muffle Furnace", category: "furnaces", href: "/products/6", imageSrc: "/images/products/product6.webp" },
-  { id: 7, title: "Climatic Test Chamber", category: "environmental", href: "/products/7", imageSrc: "/images/products/product7.webp" },
-  { id: 8, title: "Laboratory Centrifuge", category: "centrifuges", href: "/products/8", imageSrc: "/images/products/product8.webp" },
+  { id: 1, title: "Laboratory Plant Germinator", category: "germinators", href: "/products/1", imageSrc: "/images/products/product1 .webp" },
+  { id: 2, title: "Universal Laboratory Centrifuge", category: "centrifuges", href: "/products/2", imageSrc: "/images/products/product2 .webp" },
+  { id: 3, title: "Laboratory Platelet Agitator", category: "agitators", href: "/products/3", imageSrc: "/images/products/product3 .webp" },
+  { id: 4, title: "Laboratory Incubator", category: "incubators", href: "/products/4", imageSrc: "/images/products/product4.webp" },
+  { id: 5, title: "Laminar Hood", category: "hoods", href: "/products/5", imageSrc: "/images/products/product5.webp" },
+  { id: 6, title: "Vacuum Oven", category: "ovens", href: "/products/6", imageSrc: "/images/products/product6.webp" },
+  { id: 7, title: "Laboratory Fogging Test Apparatus for Insulating Glass", category: "environmental", href: "/products/7", imageSrc: "/images/products/product7.webp" },
+  { id: 8, title: "Laboratory Boiling Water Bath", category: "Bain-Marie", href: "/products/8", imageSrc: "/images/products/product8.webp" },
 ];
 
 export default function ProductsPreview() {
@@ -26,7 +26,7 @@ export default function ProductsPreview() {
         {/* Header Area */}
         <div className="flex flex-col items-center gap-4 text-center">
             <h2 className={`${wittgenstein.className} font-semibold text-4xl md:text-[2.5rem] text-[#0b0c2a] leading-tight`}>
-            Laboratory Equipment Purchase
+            Featured Products
             </h2>
             <p className="max-w-3xl text-slate-600 leading-relaxed">
             With more than 37 years of experience, Pars Azma operates as one of the first specialized manufacturers 

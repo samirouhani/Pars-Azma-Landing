@@ -16,13 +16,13 @@ export default function ProductCard({ title, category, href, imageSrc }: Product
             <span className="pointer-events-none absolute inset-0 bg-accent-blue/30 opacity-0 transition-opacity duration-200 ease-in-out group-hover:opacity-100 z-0"/>
 
             <div className="group relative flex flex-col border border-border-gray bg-white w-full h-full duration-250 ease-in-out group-hover:-translate-x-1.5 group-hover:-translate-y-1.5 group-hover:border-accent-blue transition-[transform,background-color,color,border-color,translate] z-1 group-active:translate-x-0 group-active:translate-y-0">
-                <div className="flex items-center relative aspect-square w-full overflow-hidden bg-slate-50">
+                <div className="relative aspect-square w-full overflow-hidden bg-slate-50 flex items-center justify-center">
                     <Image
-                    src={imageSrc}
-                    alt={title}
-                    width={296}
-                    height={181}
-                    className="object-cover p-4 transition-transform duration-300 group-hover:scale-105"
+                        src={imageSrc}
+                        alt={title}
+                        fill
+                        sizes="(max-width: 768px) 50vw, 25vw"
+                        className="object-contain transition-transform duration-300 group-hover:scale-105"
                     />
                 </div>
                 <div className="p-3 xs:p-5 flex flex-1 flex-col justify-between bg-white">
