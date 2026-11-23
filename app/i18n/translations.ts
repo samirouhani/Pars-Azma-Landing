@@ -19,6 +19,7 @@ export const translations = {
       },
       search: "Search",
       selectLanguageAria: "Select language",
+      closeMenuAria: "Close menu",
     },
     hero: {
       title: "Specialized Laboratory Equipment",
@@ -192,6 +193,14 @@ export const translations = {
       copyrightBrand: "Pars Azma",
       copyrightAfter: " Company.",
     },
+    searchModal: {
+      placeholder: "Search",
+      closeAria: "Close search",
+      clearAria: "Clear search",
+      productsLabel: "Products",
+      articlesLabel: "Articles",
+      noResults: "No matching results found.",
+    },
   },
   fa: {
     meta: {
@@ -210,6 +219,7 @@ export const translations = {
       },
       search: "جستجو",
       selectLanguageAria: "انتخاب زبان",
+      closeMenuAria: "بستن منو",
     },
     hero: {
       title: "تجهیزات آزمایشگاهی تخصصی",
@@ -379,6 +389,14 @@ export const translations = {
       copyrightBrand: "پارس آزما",
       copyrightAfter: " است.",
     },
+    searchModal: {
+      placeholder: "جستجو",
+      closeAria: "بستن جستجو",
+      clearAria: "پاک کردن جستجو",
+      productsLabel: "محصولات",
+      articlesLabel: "مقالات",
+      noResults: "نتیجه‌ای یافت نشد.",
+    },
   },
   tr: {
     meta: {
@@ -397,6 +415,7 @@ export const translations = {
       },
       search: "Ara",
       selectLanguageAria: "Dil seçin",
+      closeMenuAria: "Menüyü kapat",
     },
     hero: {
       title: "Özel Laboratuvar Ekipmanları",
@@ -582,6 +601,14 @@ export const translations = {
         "Bu sitenin tüm maddi ve fikri mülkiyet hakları ",
       copyrightBrand: "Pars Azma",
       copyrightAfter: " Şirketi'ne aittir.",
+    },
+    searchModal: {
+      placeholder: "Ara",
+      closeAria: "Aramayı kapat",
+      clearAria: "Aramayı temizle",
+      productsLabel: "Ürünler",
+      articlesLabel: "Makaleler",
+      noResults: "Eşleşen sonuç bulunamadı.",
     },
   },
 };

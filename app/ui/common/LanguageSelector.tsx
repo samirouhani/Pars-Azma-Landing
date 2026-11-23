@@ -11,11 +11,20 @@ const languages = [
     { code: "TR", triggerLabel: "TR", label: "Türkçe" },
 ] as const;
 
-export default function LanguageSelector() {
+interface LanguageSelectorProps {
+    placement?: "bottom" | "top";
+    className?: string;
+}
+
+export default function LanguageSelector({
+    placement = "bottom",
+    className = "hidden md:inline-block",
+}: LanguageSelectorProps) {
     const [isOpen, setIsOpen] = useState(false);
     const { language, setLanguage, t } = useLanguage();
     const containerRef = useRef<HTMLDivElement>(null);
     const activeLang = languages.find((lang) => lang.code === language) ?? languages[1];
+    const isTop = placement === "top";
 
     useEffect(() => {
         if (!isOpen) return;
@@ -42,7 +51,7 @@ export default function LanguageSelector() {
     }, [isOpen]);
 
     return (
-        <div ref={containerRef} className="relative hidden md:inline-block">
+        <div ref={containerRef} className={`relative ${className}`}>
             <button
                 type="button"
                 onClick={() => setIsOpen((prev) => !prev)}
@@ -54,7 +63,13 @@ export default function LanguageSelector() {
                 <span className="text-black-blue font-medium text-[0.875rem]">{activeLang.triggerLabel}</span>
                 <MdExpandMore
                     className={`text-black-blue size-4.5 transition-transform duration-200 ${
-                        isOpen ? "rotate-180" : "rotate-0"
+                        isTop
+                            ? isOpen
+                                ? "rotate-0"
+                                : "rotate-180"
+                            : isOpen
+                              ? "rotate-180"
+                              : "rotate-0"
                     }`}
                 />
             </button>
@@ -62,10 +77,12 @@ export default function LanguageSelector() {
             <ul
                 role="listbox"
                 aria-label={t.navbar.selectLanguageAria}
-                className={`absolute inset-s-0 top-full mt-2 min-w-full border border-border-gray bg-slightly-blue shadow-md z-50 flex flex-col py-1 transition-all duration-150 ease-out origin-top ${
+                className={`absolute inset-s-0 min-w-full border border-border-gray bg-slightly-blue shadow-md z-50 flex flex-col py-1 transition-all duration-150 ease-out ${
+                    isTop ? "bottom-full mb-2 origin-bottom" : "top-full mt-2 origin-top"
+                } ${
                     isOpen
                         ? "opacity-100 translate-y-0 pointer-events-auto"
-                        : "opacity-0 -translate-y-1 pointer-events-none"
+                        : `opacity-0 ${isTop ? "translate-y-1" : "-translate-y-1"} pointer-events-none`
                 }`}
             >
                 {languages.map((lang) => {

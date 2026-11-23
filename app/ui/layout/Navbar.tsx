@@ -10,9 +10,13 @@ import NavbarLink from "@/app/ui/common/NavbarLink";
 import VerticalDivider from "@/app/ui/common/VerticalDivider";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useLanguage } from "@/app/i18n/LanguageContext";
+import MobileMenu from "@/app/ui/layout/MobileMenu";
+import SearchModal from "@/app/ui/layout/SearchModal";
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
     const { t } = useLanguage();
 
     useEffect(() => {
@@ -27,6 +31,7 @@ export default function Navbar() {
     }, []);
 
     return (
+        <>
         <header className={`flex sticky top-0 z-50 w-full h-20 md:h-22 border-b border-border-gray bg-white/75 backdrop-blur-[6px] ${
         scrolled ? "shadow-lg" : "shadow-none"} transition-shadow duration-300 ease-in-out`}>
         <nav
@@ -62,11 +67,22 @@ export default function Navbar() {
                 <NavbarLink title={t.navbar.links.contact} linkTo="#" />
             </div>
             <div className="flex gap-4 lg:gap-9 ms-4 items-center">
-                <SearchBar />
+                <SearchBar onClick={() => setIsSearchOpen(true)} />
                 <LanguageSelector />
-                <RxHamburgerMenu className="md:hidden size-7.5 cursor-pointer"/>
+                <button
+                    type="button"
+                    onClick={() => setIsMenuOpen(true)}
+                    aria-label="Open menu"
+                    aria-expanded={isMenuOpen}
+                    className="md:hidden cursor-pointer"
+                >
+                    <RxHamburgerMenu className="size-7.5" />
+                </button>
             </div>
         </nav>
         </header>
+        <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+        <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+        </>
     );
 }
