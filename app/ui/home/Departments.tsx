@@ -1,52 +1,51 @@
-import { Wittgenstein } from "next/font/google";
+"use client";
+
 import DepartmentCard from "@/app/ui/common/DepartmentCard";
-import RevealOnScroll from "@/app/ui/common/RevealOnScroll"; // Import added
+import RevealOnScroll from "@/app/ui/common/RevealOnScroll";
+import { useLanguage } from "@/app/i18n/LanguageContext";
 
-const wittgenstein = Wittgenstein({
-  variable: "--font-wittgenstein-serif",
-  subsets: ["latin"],
-});
-
-// Data Arrays
-const mainDepartments = [
-  {
-    title: "Laboratory Furniture Division",
-    description: "Designing chemical-resistant workstations, storage cabinets, and fume hoods engineered to enhance safety, efficiency, and flexibility in scientific environments.",
-    imageSrc: "/images/departments/furniture-placeholder.webp", linkTo: "#"
-  },
-  {
-    title: "Assembly Department",
-    description: "Integrating mechanical and electronic components under strict ISO standards with rigorous quality control to deliver precise, reliable laboratory equipment.",
-    imageSrc: "/images/departments/assembly-placeholder.webp", linkTo: "#"
-  },
+const mainDepartmentsMeta = [
+  { imageSrc: "/images/departments/furniture-placeholder.webp", linkTo: "#" },
+  { imageSrc: "/images/departments/assembly-placeholder.webp", linkTo: "#" },
 ];
 
-// The smaller departments for the marquee
-const subDepartments = [
-  { title: "Quality Control", imageSrc: "/images/departments/qc.webp", linkTo: "#" },
-  { title: "Research & Development", imageSrc: "/images/departments/rd.webp", linkTo: "#" },
-  { title: "Sheet Metal Fabrication", imageSrc: "/images/departments/metal.webp", linkTo: "#" },
-  { title: "Powder Coating", imageSrc: "/images/departments/coating.webp", linkTo: "#" },
-  { title: "Electronics Lab", imageSrc: "/images/departments/electronics.webp", linkTo: "#" },
+const subDepartmentsMeta = [
+  { imageSrc: "/images/departments/qc.webp", linkTo: "#" },
+  { imageSrc: "/images/departments/rd.webp", linkTo: "#" },
+  { imageSrc: "/images/departments/metal.webp", linkTo: "#" },
+  { imageSrc: "/images/departments/coating.webp", linkTo: "#" },
+  { imageSrc: "/images/departments/electronics.webp", linkTo: "#" },
 ];
-
-// Duplicate the array so the marquee seamlessly loops
-const scrollingDepartments = [...subDepartments, ...subDepartments];
 
 export default function Departments() {
+  const { t } = useLanguage();
+
+  const mainDepartments = mainDepartmentsMeta.map((meta, index) => ({
+    ...meta,
+    ...t.departments.main[index],
+  }));
+
+  const subDepartments = subDepartmentsMeta.map((meta, index) => ({
+    ...meta,
+    ...t.departments.sub[index],
+  }));
+
+  // Duplicate the array so the marquee seamlessly loops
+  const scrollingDepartments = [...subDepartments, ...subDepartments];
+
   return (
-    <section className="flex flex-col bg-slate-50 py-13 md:py-20 overflow-hidden border-t border-b border-border-gray">
+    <section className="flex flex-col bg-slightly-blue py-13 md:py-20 overflow-hidden border-t border-b border-border-gray">
       
       {/* 1. Header Area */}
       <div className="mx-auto w-full max-w-500 px-5.5 sm:px-10 md:px-20 mb-10">
         <RevealOnScroll delay={0}>
-            <h2 className={`${wittgenstein.className} font-semibold text-3xl md:text-[2.5rem] text-black-blue leading-tight mb-4`}>
-            The Main Departments of Pars Azma
+            <h2 className="text-h2 text-black-blue mb-4">
+            {t.departments.title}
             </h2>
         </RevealOnScroll>
         <RevealOnScroll delay={100}>
-            <p className="max-w-2xl text-[#475569] leading-relaxed text-sm sm:text-base">
-            Exploring our specialized facilities dedicated to custom laboratory furniture design and high-precision equipment assembly.
+            <p className="max-w-2xl text-body text-secondary-text">
+            {t.departments.description}
             </p>
         </RevealOnScroll>
       </div>
@@ -63,6 +62,7 @@ export default function Departments() {
                     description={dept.description}
                     imageSrc={dept.imageSrc}
                     linkTo={dept.linkTo}
+                    ctaLabel={t.departments.viewMoreDetails}
                 />
               </RevealOnScroll>
             </div>
@@ -80,6 +80,46 @@ export default function Departments() {
       {/* 4. Infinite Scroll Marquee */}
       {/* Wrapped the entire scrolling section to fade in together */}
       <RevealOnScroll delay={300} className="relative w-full overflow-hidden flex">
+        {/* Left Feathered Fade & Progressive Blur */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 left-0 w-10 sm:w-16 md:w-24 lg:w-32 z-20"
+        >
+          <div
+            className="absolute inset-0"
+            style={{
+              maskImage: "linear-gradient(to right, black 0%, rgba(0,0,0,0.45) 55%, transparent 100%)",
+              WebkitMaskImage: "linear-gradient(to right, black 0%, rgba(0,0,0,0.45) 55%, transparent 100%)",
+            }}
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background: "linear-gradient(to right, rgba(249,250,252,1) 0%, rgba(249,250,252,0.85) 25%, rgba(249,250,252,0.45) 55%, rgba(249,250,252,0.12) 80%, rgba(249,250,252,0) 100%)",
+            }}
+          />
+        </div>
+
+        {/* Right Feathered Fade & Progressive Blur */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 right-0 w-10 sm:w-16 md:w-24 lg:w-32 z-20"
+        >
+          <div
+            className="absolute inset-0"
+            style={{
+              maskImage: "linear-gradient(to left, black 0%, rgba(0,0,0,0.45) 55%, transparent 100%)",
+              WebkitMaskImage: "linear-gradient(to left, black 0%, rgba(0,0,0,0.45) 55%, transparent 100%)",
+            }}
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background: "linear-gradient(to left, rgba(249,250,252,1) 0%, rgba(249,250,252,0.85) 25%, rgba(249,250,252,0.45) 55%, rgba(249,250,252,0.12) 80%, rgba(249,250,252,0) 100%)",
+            }}
+          />
+        </div>
+
         <div className="flex w-max animate-marquee gap-6 px-6 sm:gap-8 py-4">
           {scrollingDepartments.map((dept, index) => (
             <div key={index} className="w-50 sm:w-70 shrink-0">
@@ -87,6 +127,7 @@ export default function Departments() {
                     title={dept.title}
                     imageSrc={dept.imageSrc}
                     linkTo={dept.linkTo}
+                    ctaLabel={t.departments.viewMoreDetails}
                 />
             </div>
           ))}
