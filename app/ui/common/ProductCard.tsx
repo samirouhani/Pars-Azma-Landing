@@ -11,7 +11,7 @@ interface ProductCardProps {
 
 export default function ProductCard({ title, category, href, imageSrc, ctaLabel = "View Specs" }: ProductCardProps) {
     return (
-        <div className='group relative h-full'>
+        <div className='group relative h-full transition-[scale,filter] duration-150 ease-out max-sm:active:scale-[0.985] max-sm:active:brightness-[0.96]'>
 
             {/*The copy underneith, for the hover effect:*/}
             <span className="pointer-events-none absolute inset-0 bg-accent-blue/30 opacity-0 transition-opacity duration-200 ease-in-out group-hover:opacity-100 z-0"/>
@@ -39,7 +39,7 @@ export default function ProductCard({ title, category, href, imageSrc, ctaLabel 
                         <hr className="border-border-gray" />
                         <Link
                             href={href} 
-                            className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-accent-blue group-hover:underline before:absolute before:inset-0 before:z-0" 
+                            className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-accent-blue group-hover:underline before:absolute before:inset-0 before:z-0 max-sm:active:scale-100 max-sm:active:brightness-100" 
                         >
                             {ctaLabel}
                             <svg

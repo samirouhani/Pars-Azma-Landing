@@ -13,11 +13,13 @@ const languages = [
 
 interface LanguageSelectorProps {
     placement?: "bottom" | "top";
+    size?: "sm" | "lg";
     className?: string;
 }
 
 export default function LanguageSelector({
     placement = "bottom",
+    size = "sm",
     className = "hidden md:inline-block",
 }: LanguageSelectorProps) {
     const [isOpen, setIsOpen] = useState(false);
@@ -25,6 +27,7 @@ export default function LanguageSelector({
     const containerRef = useRef<HTMLDivElement>(null);
     const activeLang = languages.find((lang) => lang.code === language) ?? languages[1];
     const isTop = placement === "top";
+    const isLg = size === "lg";
 
     useEffect(() => {
         if (!isOpen) return;
@@ -57,12 +60,18 @@ export default function LanguageSelector({
                 onClick={() => setIsOpen((prev) => !prev)}
                 aria-haspopup="listbox"
                 aria-expanded={isOpen}
-                className="flex w-max border border-border-gray border-solid h-8 gap-1.5 pl-2 pr-1.5 py-1 items-center bg-slightly-blue cursor-pointer hover:border-blue-gray "
+                className={`flex w-max border border-border-gray border-solid items-center bg-slightly-blue cursor-pointer hover:border-blue-gray ${
+                    isLg ? "h-11 gap-2.5 pl-3.5 pr-3 py-2" : "h-8 gap-1.5 pl-2 pr-1.5 py-1"
+                }`}
             >
-                <PiGlobe className="text-black-blue size-4.5" />
-                <span className="text-black-blue font-medium text-[0.875rem]">{activeLang.triggerLabel}</span>
+                <PiGlobe className={`text-black-blue ${isLg ? "size-5.5" : "size-4.5"}`} />
+                <span className={`text-black-blue font-medium ${isLg ? "text-base" : "text-[0.875rem]"}`}>
+                    {activeLang.triggerLabel}
+                </span>
                 <MdExpandMore
-                    className={`text-black-blue size-4.5 transition-transform duration-200 ${
+                    className={`text-black-blue transition-transform duration-200 ${
+                        isLg ? "size-5.5" : "size-4.5"
+                    } ${
                         isTop
                             ? isOpen
                                 ? "rotate-0"
@@ -98,7 +107,9 @@ export default function LanguageSelector({
                                     setLanguage(lang.code);
                                     setIsOpen(false);
                                 }}
-                                className={`w-full px-3 py-2 text-center text-sm transition-colors cursor-pointer hover:bg-white hover:text-accent-blue ${
+                                className={`w-full text-center transition-colors cursor-pointer hover:bg-white hover:text-accent-blue ${
+                                    isLg ? "px-5 py-3 text-base" : "px-3 py-2 text-sm"
+                                } ${
                                     isSelected ? "font-semibold text-accent-blue" : "text-black-blue"
                                 }`}
                             >

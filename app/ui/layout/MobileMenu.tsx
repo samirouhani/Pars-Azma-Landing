@@ -118,7 +118,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 key={item.title}
                 href={item.href}
                 onClick={onClose}
-                className="group flex items-center justify-between py-6 text-h3 text-black-blue hover:text-accent-blue transition-colors"
+                className="group -mx-3 px-3 flex items-center justify-between py-6 text-xl font-semibold text-black-blue hover:text-accent-blue max-sm:active:bg-slightly-blue transition-colors"
               >
                 <span>{item.title}</span>
                 <svg
@@ -144,7 +144,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         {/* Bottom language selector */}
         <div className="mt-auto pt-4">
           <hr className="border-border-gray mb-5" />
-          <LanguageSelector placement="top" className="inline-block" />
+          <LanguageSelector placement="top" size="lg" className="inline-block" />
         </div>
       </div>
     </div>
