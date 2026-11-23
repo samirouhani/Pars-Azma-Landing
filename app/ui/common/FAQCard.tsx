@@ -1,19 +1,30 @@
-"use-client"
+"use client";
 import { useState } from "react";
 
 interface FAQCardProps {
     question: string;
     answer: string;
+    isOpen?: boolean;
+    onToggle?: () => void;
 }
 
-export default function FAQCard({ question, answer }: FAQCardProps) {
-    const [isOpen, setIsOpen] = useState(false);
+export default function FAQCard({ question, answer, isOpen: controlledIsOpen, onToggle }: FAQCardProps) {
+    const [internalIsOpen, setInternalIsOpen] = useState(false);
+    const isOpen = controlledIsOpen ?? internalIsOpen;
+
+    const handleClick = () => {
+        if (onToggle) {
+            onToggle();
+        } else {
+            setInternalIsOpen((prev) => !prev);
+        }
+    };
 
     return (
         // The outer container handles the click and the target for the "group/faq" hover states
         <div 
             className="group/faq relative w-full cursor-pointer block"
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={handleClick}
             aria-expanded={isOpen}
         >
             {/* The copy underneath, for the blue shadow hover effect */}
@@ -24,12 +35,12 @@ export default function FAQCard({ question, answer }: FAQCardProps) {
                 
                 {/* Question & Chevron Row */}
                 <div className="flex flex-row justify-between items-center gap-4">
-                    <h3 className="font-semibold text-black-blue text-xs md:text-sm tracking-wider uppercase leading-relaxed">
+                    <h3 className="text-h4 text-black-blue">
                         {question}
                     </h3>
                     
                     {/* Chevron Icon (flips based on isOpen state) */}
-                    <div className="shrink-0 text-slate-400 group-hover/faq:text-accent-blue transition-colors duration-300">
+                    <div className="shrink-0 text-blue-gray group-hover/faq:text-accent-blue transition-colors duration-300">
                         <svg 
                             className={`w-5 h-5 transition-transform duration-300 ease-in-out ${isOpen ? 'rotate-180' : 'rotate-0'}`} 
                             fill="none" 
@@ -50,7 +61,7 @@ export default function FAQCard({ question, answer }: FAQCardProps) {
                     <div className="overflow-hidden">
                         {/* A top border to separate the answer when open */}
                         <div className="border-t border-border-gray pt-4 md:pt-5">
-                            <p className="text-[#475569] text-sm md:text-base leading-relaxed">
+                            <p className="text-body text-secondary-text">
                                 {answer}
                             </p>
                         </div>

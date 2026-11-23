@@ -1,17 +1,40 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import {
+  IBM_Plex_Sans,
+  IBM_Plex_Mono,
+  Wittgenstein,
+  Vazirmatn,
+  Estedad,
+} from "next/font/google";
 import "./globals.css";
 import Navbar from "./ui/layout/Navbar";
 import Footer from "./ui/layout/Footer";
+import { LanguageProvider } from "./i18n/LanguageContext";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const ibmPlexSans = IBM_Plex_Sans({
+  variable: "--font-ibm-plex-sans",
+  subsets: ["latin", "latin-ext"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const ibmPlexMono = IBM_Plex_Mono({
+  variable: "--font-ibm-plex-mono",
+  subsets: ["latin", "latin-ext"],
+  weight: ["400"],
+});
+
+const wittgenstein = Wittgenstein({
+  variable: "--font-wittgenstein",
+  subsets: ["latin", "latin-ext"],
+});
+
+const vazirmatn = Vazirmatn({
+  variable: "--font-vazirmatn",
+  subsets: ["arabic", "latin"],
+});
+
+const estedad = Estedad({
+  variable: "--font-estedad",
+  subsets: ["arabic", "latin"],
 });
 
 export const metadata: Metadata = {
@@ -23,15 +46,17 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${ibmPlexSans.variable} ${ibmPlexMono.variable} ${wittgenstein.variable} ${vazirmatn.variable} ${estedad.variable} h-full antialiased`}
     >
       <body className={`min-h-full flex flex-col`}>
-        <Navbar />
-        <main className="flex-1">
-          {children}
-        </main>
-        <Footer />
-        </body>
+        <LanguageProvider>
+          <Navbar />
+          <main className="flex-1">
+            {children}
+          </main>
+          <Footer />
+        </LanguageProvider>
+      </body>
     </html>
   );
 }

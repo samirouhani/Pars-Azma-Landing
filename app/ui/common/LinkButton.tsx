@@ -14,7 +14,7 @@ type LinkButtonProps = {
 const variantStyles: Record<LinkButtonVariant, string> = {
   primary:
     "bg-accent-blue text-white border-transparent",
-  secondary: "bg-white text-slate-800 hover:bg-slate-50 border-border-gray",
+  secondary: "bg-white text-black-blue hover:bg-slightly-blue border-border-gray",
 };
 
 export default function LinkButton({
@@ -35,7 +35,7 @@ export default function LinkButton({
         >
             <span>{children}</span>
             {icon ? (
-                <span className="inline-block transition-transform delay-75 duration-200 ease-in-out group-hover:translate-x-1.5">
+                <span className="inline-block transition-transform delay-75 duration-200 ease-in-out group-hover:translate-x-1.5 rtl:group-hover:-translate-x-1.5">
                     {icon}
                 </span>
             ) : null}
